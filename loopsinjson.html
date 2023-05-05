@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DAY 5 TASKS</h1>
+    <h2>JSON iterate over all loops (for, for in, for of,forEach)</h2>
+    <script>
+        console.log("DAY 5 TASKS BY HEMALATHA")
+        const xhr=new XMLHttpRequest();
+        xhr.open('GET',"https://restcountries.com/v3.1/all");
+        xhr.onload = function () {
+            let data=JSON.parse(xhr.response)
+            console.log("TOTAL COUNTRIES DETAILS:",data)
+            console.log("------------------------")
+            console.log("USING FOR LOOP")
+            console.log("------------------------")
+
+            for(let i=0;i<data.length;i++)
+            console.log(`COUNTRY NAME:${data[i].name.common}\nREGION:${data[i].region}S\nSUBREGION:${data[i].subregion}`)
+           
+            console.log("------------------------")
+            console.log("USING FOR IN LOOP")
+            console.log("------------------------")
+
+            for(i in data)
+            console.log(`COUNTRY NAME:${data[i].name.common}\nCAPITAL:${data[i].capital}`)
+
+            console.log("------------------------")
+            console.log("USING FOR OF LOOP")
+            console.log("------------------------")
+
+            for(i of data)
+            console.log(`COUNTRY NAME:${i.name.official}\nPOPULATION:${i.population}`)
+
+            console.log("------------------------")
+            console.log("USING FOREACH LOOP")
+            console.log("------------------------")
+
+            data.forEach((e)=>{
+                    console.log(`COUNTRY NAME:${e.name.common}\nSTART OF WEEK:${e.startOfWeek}`)
+                })
+                console.log("---------------------------------------------------------------------")
+                console.log("JSON iterate over for, for in, for of,forEach loops are finished")
+                console.log("---------------------------------------------------------------------")
+
+
+        }
+        xhr.send();
+    </script>
+</body>
+</html>
